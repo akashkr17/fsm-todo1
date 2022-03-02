@@ -45,7 +45,7 @@ class SizeBasedThrottler extends FSM[NewState, StateData] {
     case Event(_, _) => stay()
   }
 
-  when(Waiting, stateTimeout = 2 seconds){
+  when(Waiting, stateTimeout = 2.seconds){
     case Event(msg: Message, StateData(oldQueue)) =>
       val newQueue = oldQueue :+ msg
       println(s"$currentTime at Idle $newQueue")
