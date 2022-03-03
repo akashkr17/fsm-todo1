@@ -25,9 +25,11 @@ lazy val Versions = new {
 lazy val akkaDependencies = Seq(
   "com.lightbend.akka" %% "akka-stream-alpakka-csv" % "3.0.4",
   "com.typesafe.akka" %% "akka-stream-kafka" % "3.0.0",
+  "io.spray" %%  "spray-json" % "1.3.6",
   "com.typesafe.akka" %% "akka-actor" % Versions.akkaVersion,
   "com.typesafe.akka" %% "akka-stream" % Versions.akkaVersion,
   "com.typesafe.akka" %% "akka-slf4j" % Versions.akkaVersion,
+  "com.lightbend.akka" %% "akka-stream-alpakka-file" % "2.0.0",
   "com.typesafe.akka" %% "akka-testkit" % Versions.akkaVersion % Test,
   "com.typesafe.akka" %% "akka-stream-testkit" % Versions.akkaVersion % Test,
   "com.typesafe.akka" %% "akka-testkit" % Versions.akkaVersion % Test
@@ -45,6 +47,14 @@ lazy val loggingDependencies = Seq(
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.4",
   "org.slf4j" % "slf4j-api" % "1.7.25"
 )
+
+val circeVersion = "0.14.1"
+
+libraryDependencies ++= Seq(
+  "io.circe" %% "circe-core",
+  "io.circe" %% "circe-generic",
+  "io.circe" %% "circe-parser"
+).map(_ % circeVersion)
 
 lazy val otherDependencies = Seq(
   "io.spray" %% "spray-json" % "1.3.5"
